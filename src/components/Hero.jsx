@@ -45,7 +45,7 @@ export default function Hero() {
           width: '100%',
           height: '100%',
           opacity: 0.15,
-          backgroundImage: 'url(/lokesh12.jpeg)',
+          backgroundImage: `url(${import.meta.env.BASE_URL}lokesh12.jpeg)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           filter: 'grayscale(100%)'
