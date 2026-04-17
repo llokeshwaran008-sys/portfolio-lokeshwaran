@@ -64,7 +64,7 @@ export default function AboutMe() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                src={`${import.meta.env.BASE_URL}lokiiiiiii.jpeg`}
+                src={`${import.meta.env.BASE_URL}loki12.jpeg`}
                 alt="Lokeshwaran V" 
                 style={{ width: '100%', height: 'auto', borderRadius: '12px', position: 'relative', zIndex: 2, display: 'block' }}
               />
