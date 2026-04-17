@@ -1,0 +1,179 @@
+:root {
+  --bg-deep: #050a0f;
+  --bg-surface: rgba(0, 40, 70, 0.2);
+  --bg-card: rgba(0, 15, 30, 0.6);
+  --primary: #00f3ff;
+  --primary-glow: rgba(0, 243, 255, 0.6);
+  --secondary: #ffb300;
+  --accent-red: #cc0000;
+  --text-main: #e0f7fa;
+  --text-muted: #80deea;
+  --white: #ffffff;
+  --font-heading: 'Chakra Petch', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.canvas-container {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  position: relative;
+}
+
+
+
+.ghost-border {
+  outline: 1px solid rgba(0, 243, 255, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 20px rgba(0,243,255,0.05);
+}
+
+.ghost-border:hover {
+  outline: 1px solid var(--primary);
+  box-shadow: 0 0 15px var(--primary-glow), inset 0 0 20px rgba(0,243,255,0.1);
+}
+
+.btn-primary {
+  background-color: transparent;
+  color: var(--primary);
+  font-weight: 700;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 1rem 2.5rem;
+  border: 1px solid var(--primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--primary);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.btn-primary:hover {
+  color: #050a0f;
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.btn-primary:hover::before {
+  left: 0;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 8rem 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Custom Scrollbar - Tech HUD style */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+  border-left: 1px solid rgba(0,243,255,0.1);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+/* Tech HUD text decorations */
+.hud-text-small {
+  font-family: var(--font-heading);
+  color: var(--secondary);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+}
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  background: var(--primary);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+}
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  right: auto;
+  background-color: var(--bg-deep);
+  border: 2px solid var(--secondary);
+  top: 6px;
+  left: -2rem;
+  border-radius: 50%;
+  margin-left: -5px;
+  z-index: 1;
+  box-shadow: 0 0 10px var(--secondary);
+}
