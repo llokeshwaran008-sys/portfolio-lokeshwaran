@@ -41,10 +41,10 @@ export default function Projects() {
               AQUACULTURE Management System
             </h3>
             <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', lineHeight: 1.6 }}>
-              An intelligent IoT-driven platform designed to monitor water quality parameters in real-time. Features automated feeding schedules, health analytics dashboard, and predictive mortality alerts.
+              A comprehensive web-based platform designed to monitor and manage water quality parameters. Built with Django and SQL, it features health analytics dashboards, robust data management, and predictive mortality alerts.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '2.5rem' }}>
-              {["Django", "IoT Integration", "ChartJS"].map(tag => (
+              {["Django", "SQL", "ChartJS"].map(tag => (
                 <span key={tag} style={{ background: 'var(--bg-surface)', padding: '0.25rem 0.75rem', fontSize: '0.625rem', fontFamily: 'var(--font-heading)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--secondary)' }}>
                   {tag}
                 </span>

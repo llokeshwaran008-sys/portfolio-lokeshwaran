@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Download } from 'lucide-react';
 
 export default function Hero() {
   const x = useMotionValue(0);
@@ -85,14 +85,19 @@ export default function Hero() {
             transition={{ delay: 0.3 }}
             style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', transform: "translateZ(40px)" }}
           >
-            <a href="#projects" className="btn-primary" style={{ textDecoration: 'none' }}>
-              ENGAGE SYSTEMS <ArrowRight size={20} />
-            </a>
-            <a href="#about" className="glass-panel" style={{ 
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <a href="https://github.com/llokeshwaran008-sys" target="_blank" rel="noopener noreferrer" className="glass-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '3.5rem', height: '3.5rem', borderRadius: '50%', color: 'var(--text-main)', transition: 'all 0.3s ease', textDecoration: 'none' }}>
+                <Github size={24} />
+              </a>
+              <a href="https://linkedin.com/in/lokeshwaran-v" target="_blank" rel="noopener noreferrer" className="glass-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '3.5rem', height: '3.5rem', borderRadius: '50%', color: 'var(--text-main)', transition: 'all 0.3s ease', textDecoration: 'none' }}>
+                <Linkedin size={24} />
+              </a>
+            </div>
+            <a href={`${import.meta.env.BASE_URL}Lokesh MCA Resume.pdf`} download="Lokesh MCA Resume.pdf" className="glass-panel" style={{ 
               display: 'inline-flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)', 
               fontFamily: 'var(--font-heading)', fontWeight: 700, padding: '1rem 2rem', textDecoration: 'none', transition: 'all 0.3s ease', textTransform: 'uppercase', letterSpacing: '2px'
             }}>
-              INITIALIZE LOG
+              VIEW MY RESUME <Download size={20} />
             </a>
           </motion.div>
         </motion.div>
