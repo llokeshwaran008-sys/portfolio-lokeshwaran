@@ -24,9 +24,9 @@ export default function AboutMe() {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3rem', alignItems: 'center' }} className="about-me-grid">
-        
+
         {/* Left Content */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -35,7 +35,7 @@ export default function AboutMe() {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             <User size={24} color="var(--primary)" />
-            <span style={{ fontSize: 'clamp(0.9rem, 2vw, 1.125rem)', color: 'var(--text-main)', fontFamily: 'var(--font-heading)', letterSpacing: '1px' }}>ID: LOKESHWARAN V</span>
+            <span style={{ fontSize: 'clamp(0.9rem, 2vw, 1.125rem)', color: 'var(--text-main)', fontFamily: 'var(--font-heading)', letterSpacing: '1px' }}>NAME: LOKESHWARAN V</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             <Cake size={24} color="var(--primary)" />
@@ -52,7 +52,7 @@ export default function AboutMe() {
         </motion.div>
 
         {/* Right Image */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -60,11 +60,11 @@ export default function AboutMe() {
         >
           <div className="about-img-container" style={{ minHeight: '300px', width: '100%', maxWidth: '350px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {showImage ? (
-              <motion.img 
+              <motion.img
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 src={`${import.meta.env.BASE_URL}loki12.jpeg`}
-                alt="Lokeshwaran V" 
+                alt="Lokeshwaran V"
                 style={{ width: '100%', height: 'auto', borderRadius: '12px', position: 'relative', zIndex: 2, display: 'block' }}
               />
             ) : (

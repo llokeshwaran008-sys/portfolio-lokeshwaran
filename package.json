@@ -9,15 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@react-three/drei": "^9.88.17",
-    "@react-three/fiber": "^8.15.11",
-    "framer-motion": "^10.16.4",
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
+    "framer-motion": "^10.18.0",
     "lucide-react": "^0.292.0",
+    "maath": "^0.10.8",
     "pdf-parse": "^2.4.5",
     "pdf2json": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "three": "^0.164.0"
+    "three": "^0.164.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.0",

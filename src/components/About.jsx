@@ -32,14 +32,14 @@ export default function About() {
   return (
     <section id="experience" className="section-container" style={{ paddingTop: '8rem', maxWidth: '1000px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '3rem', fontWeight: 700, letterSpacing: '0.05em', color: 'var(--text-main)', textShadow: '0 0 10px var(--primary-glow)' }}>
+        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 6vw, 3rem)', fontWeight: 700, letterSpacing: '0.05em', color: 'var(--text-main)', textShadow: '0 0 10px var(--primary-glow)' }}>
           ACADEMICS & <span className="text-gradient">FIELD EXPERIENCE</span>
         </h2>
       </div>
 
       <div style={{ position: 'relative' }}>
         {/* Central Line */}
-        <div className="hidden md-block" style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: '2px', background: 'rgba(59, 130, 246, 0.3)', transform: 'translateX(-50%)' }}></div>
+        <div className="md-block" style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: '2px', background: 'rgba(59, 130, 246, 0.3)', transform: 'translateX(-50%)' }}></div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
           {experiences.map((exp, i) => (
@@ -48,7 +48,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               key={i} 
-              style={{ display: 'flex', width: '100%', alignItems: 'center' }}
+              style={{ display: 'flex', width: '100%', alignItems: 'center', position: 'relative' }}
               className={`timeline-row ${exp.align === 'left' ? 'flex-row' : 'flex-row-reverse'}`}
             >
               <div className="timeline-content-pc" style={{ width: '50%', padding: exp.align === 'left' ? '0 3rem 0 0' : '0 0 0 3rem', display: 'flex', justifyContent: exp.align === 'left' ? 'flex-end' : 'flex-start' }}>
@@ -67,13 +67,25 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Icon Marker */}
-              <div className="timeline-marker hidden md-flex" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', width: '40px', height: '40px', borderRadius: '50%', background: 'var(--bg-deep)', border: '2px solid rgba(59, 130, 246, 0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
+              {/* Icon Marker - Hidden on mobile via md-flex class */}
+              <div className="timeline-marker md-flex" style={{ 
+                position: 'absolute', 
+                left: '50%', 
+                transform: 'translateX(-50%)', 
+                width: '40px', 
+                height: '40px', 
+                borderRadius: '50%', 
+                background: 'var(--bg-deep)', 
+                border: '2px solid rgba(59, 130, 246, 0.5)', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                zIndex: 10 
+              }}>
                 {exp.icon}
               </div>
 
               {/* Empty Space for opposing side */}
-              <div className="hidden md-block" style={{ width: '50%' }}></div>
+              <div className="md-block" style={{ width: '50%' }}></div>
             </motion.div>
           ))}
         </div>
