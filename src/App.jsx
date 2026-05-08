@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import Background3D from './components/Background3D'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
@@ -7,10 +8,22 @@ import Skills from './components/Skills'
 import About from './components/About'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
+import LoadingScreen from './components/LoadingScreen'
+import CustomCursor from './components/CustomCursor'
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <>
+      <AnimatePresence>
+        {isLoading && (
+          <LoadingScreen onComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
+
+      <CustomCursor />
+      
       <Background3D />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <Navigation />

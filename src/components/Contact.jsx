@@ -20,64 +20,60 @@ export default function Contact() {
     if (data.success) {
       setResult("Form Submitted Successfully");
       event.target.reset();
-      setTimeout(() => setResult(""), 5000); // Clear message after 5s
+      setTimeout(() => setResult(""), 5000);
     } else {
       setResult("Error submitting form");
     }
   };
 
   return (
-    <section id="contact" style={{ padding: '8rem 2rem' }}>
+    <section id="contact" className="section-container" style={{ padding: '4rem 1.5rem' }}>
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
 
-        {/* Top Centered Header */}
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '3rem', fontWeight: 700, color: 'var(--primary)', textShadow: '0 0 10px var(--primary-glow)' }}>
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 700, color: 'var(--primary)', textShadow: '0 0 10px var(--primary-glow)' }}>
             COMMUNICATION <span style={{ color: 'var(--text-main)' }}>LINK</span>
           </h2>
         </div>
 
-        {/* Two Column Layout */}
-        <div style={{ display: 'grid', gap: '4rem', alignItems: 'center' }} className="contact-grid">
+        <div style={{ display: 'grid', gap: '3rem', alignItems: 'center' }} className="contact-grid">
 
-          {/* Left Column - Contact Details */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-              <Home size={28} color="var(--primary)" />
-              <span style={{ fontSize: '1.125rem', color: 'var(--text-main)', fontWeight: 500 }}>Vellore, Tamilnadu</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <Home size={24} color="var(--primary)" />
+              <span style={{ fontSize: '1rem', color: 'var(--text-main)', fontWeight: 500 }}>Vellore, Tamilnadu</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-              <Phone size={28} color="var(--primary)" />
-              <span style={{ fontSize: '1.125rem', color: 'var(--text-main)', fontWeight: 500 }}>+91 9500803720</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <Phone size={24} color="var(--primary)" />
+              <span style={{ fontSize: '1rem', color: 'var(--text-main)', fontWeight: 500 }}>+91 9500803720</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-              <Mail size={28} color="var(--primary)" />
-              <span style={{ fontSize: '1.125rem', color: 'var(--text-main)', fontWeight: 500 }}>llokeshwaran008@gmail.com</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <Mail size={24} color="var(--primary)" />
+              <span style={{ fontSize: '1rem', color: 'var(--text-main)', fontWeight: 500, wordBreak: 'break-all' }}>llokeshwaran008@gmail.com</span>
             </div>
           </motion.div>
 
-          {/* Right Column - Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="glass-panel"
             style={{
-              padding: '2.5rem',
+              padding: 'clamp(1.5rem, 5vw, 2.5rem)',
               borderTop: '2px solid var(--primary)',
               borderBottom: '2px solid var(--secondary)'
             }}
           >
-            <h3 style={{ fontFamily: 'var(--font-heading)', color: '#ffffff', fontSize: '1.5rem', fontWeight: 700, marginBottom: '2rem' }}>
+            <h3 style={{ fontFamily: 'var(--font-heading)', color: '#ffffff', fontSize: '1.25rem', fontWeight: 700, marginBottom: '1.5rem' }}>
               Contact Me
             </h3>
 
-            <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <label style={{ color: '#e2e8f0', fontWeight: 600, fontSize: '0.875rem' }}>Your Name</label>
                 <input
@@ -108,7 +104,7 @@ export default function Contact() {
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: '1rem' }}>
+              <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: '0.5rem' }}>
                 TRANSMIT MESSAGE
               </button>
               {result && (

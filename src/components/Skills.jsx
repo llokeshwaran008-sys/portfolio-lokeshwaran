@@ -17,7 +17,7 @@ export default function Skills() {
         { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
         { name: "Django", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" },
         { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-        { name: "Supabase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg" }
+        { name: "Supabase", icon: "https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg" }
       ]
     },
     {
@@ -32,12 +32,12 @@ export default function Skills() {
   return (
     <section id="skills" className="section-container" style={{ paddingTop: '8rem', paddingBottom: '4rem' }}>
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '2.5rem', fontWeight: 700, color: 'var(--primary)', textShadow: '0 0 10px var(--primary-glow)' }}>
+        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 5vw, 2.5rem)', fontWeight: 700, color: 'var(--primary)', textShadow: '0 0 10px var(--primary-glow)' }}>
           SYSTEM <span style={{ color: 'var(--text-main)' }}>CAPABILITIES</span>
         </h2>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', maxWidth: '1100px', margin: '0 auto' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', maxWidth: '1100px', margin: '0 auto' }}>
         {skillCategories.map((category, i) => (
           <motion.div
             key={i}
@@ -66,7 +66,7 @@ export default function Skills() {
               {category.title}
             </h3>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem 1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(70px, 1fr))', gap: '2rem 1rem' }}>
               {category.skills.map((skill, j) => (
                 <motion.div 
                   key={j} 
@@ -76,9 +76,9 @@ export default function Skills() {
                 >
                   <motion.img 
                     whileHover={{ filter: "drop-shadow(0px 0px 15px var(--primary))" }}
-                    src={skill.icon} alt={skill.name} style={{ width: '40px', height: '40px', objectFit: 'contain', ...(skill.style || {}) }} 
+                    src={skill.icon} alt={skill.name} style={{ width: 'clamp(30px, 8vw, 40px)', height: 'clamp(30px, 8vw, 40px)', objectFit: 'contain', ...(skill.style || {}) }} 
                   />
-                  <span style={{ color: 'var(--text-main)', fontSize: '0.75rem', fontWeight: 600, textAlign: 'center', transform: 'translateZ(10px)', fontFamily: 'var(--font-heading)', letterSpacing: '1px' }}>{skill.name}</span>
+                  <span style={{ color: 'var(--text-main)', fontSize: '0.7rem', fontWeight: 600, textAlign: 'center', transform: 'translateZ(10px)', fontFamily: 'var(--font-heading)', letterSpacing: '1px' }}>{skill.name}</span>
                 </motion.div>
               ))}
             </div>

@@ -1,7 +1,20 @@
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Download } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'framer-motion';
+import { Github, Linkedin, Download } from 'lucide-react';
+
+const roles = [
+  "WEB DEVELOPER",
+  "PYTHON FULL STACK",
+  "UI/UX DESIGNER",
+  "SYSTEM ARCHITECT"
+];
 
 export default function Hero() {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -10,6 +23,32 @@ export default function Hero() {
 
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const fullText = roles[roleIndex];
+      
+      if (!isDeleting) {
+        setCurrentText(fullText.substring(0, currentText.length + 1));
+        setTypingSpeed(100);
+        
+        if (currentText === fullText) {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        setCurrentText(fullText.substring(0, currentText.length - 1));
+        setTypingSpeed(50);
+        
+        if (currentText === "") {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, roleIndex, typingSpeed]);
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -25,18 +64,18 @@ export default function Hero() {
     x.set(0);
     y.set(0);
   };
+
   return (
     <section id="hero" style={{
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '5rem 2rem 0',
+      padding: '5rem 1.5rem 0',
       position: 'relative',
       overflow: 'hidden'
     }}>
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-        {/* Replacing the abstract mesh with the user's profile image blended into the background */}
         <div style={{
           position: 'absolute',
           top: '50%',
@@ -62,7 +101,18 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1, type: "spring" }}
-            style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2.5rem, 7vw, 8rem)', fontWeight: 700, letterSpacing: '0.05em', marginBottom: '2rem', lineHeight: 1, transform: "translateZ(70px)", color: 'var(--primary)', textShadow: '0 0 20px var(--primary-glow)', whiteSpace: 'nowrap' }}
+            style={{ 
+              fontFamily: 'var(--font-heading)', 
+              fontSize: 'clamp(2.5rem, 8vw, 8rem)', 
+              fontWeight: 700, 
+              letterSpacing: '0.05em', 
+              marginBottom: '2rem', 
+              lineHeight: 1.1, 
+              transform: "translateZ(70px)", 
+              color: 'var(--primary)', 
+              textShadow: '0 0 20px var(--primary-glow)',
+              wordBreak: 'break-word'
+            }}
           >
             LOKESHWARAN V
           </motion.h1>
@@ -72,10 +122,15 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
             className="glass-panel"
-            style={{ display: 'inline-block', padding: '1rem 2rem', marginBottom: '3rem', transform: "translateZ(50px)", borderLeft: '4px solid var(--secondary)' }}
+            style={{ display: 'inline-block', padding: '1rem 2.5rem', marginBottom: '3rem', transform: "translateZ(50px)", borderLeft: '4px solid var(--secondary)' }}
           >
-            <p style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', color: 'var(--text-main)', fontWeight: 500, letterSpacing: '0.1em' }}>
-              TARGET: WEB DEVELOPER <span style={{ color: 'var(--accent-red)', margin: '0 1rem' }}>|</span> PYTHON FULL STACK
+            <p style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(0.875rem, 2.5vw, 1.5rem)', color: 'var(--text-main)', fontWeight: 500, letterSpacing: '0.1em', minWidth: '300px' }}>
+              TARGET: <span style={{ color: 'var(--primary)' }}>{currentText}</span>
+              <motion.span
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{ repeat: Infinity, duration: 0.8 }}
+                style={{ marginLeft: '2px', borderLeft: '2px solid var(--primary)' }}
+              />
             </p>
           </motion.div>
 
@@ -103,9 +158,9 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <div style={{ position: 'absolute', bottom: '3rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', opacity: 0.5 }}>
+      <div style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', opacity: 0.5 }}>
         <span style={{ fontFamily: 'var(--font-heading)', fontSize: '10px', letterSpacing: '0.5em', textTransform: 'uppercase' }}>Scroll</span>
-        <div style={{ width: '1px', height: '3rem', background: 'linear-gradient(to bottom, var(--primary), transparent)' }}></div>
+        <div style={{ width: '1px', height: '2rem', background: 'linear-gradient(to bottom, var(--primary), transparent)' }}></div>
       </div>
     </section>
   );
