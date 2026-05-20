@@ -1,60 +1,108 @@
 import React, { useState } from 'react'
-import { AnimatePresence } from 'framer-motion'
-import Background3D from './components/Background3D'
-import Navigation from './components/Navigation'
-import Hero from './components/Hero'
-import AboutMe from './components/AboutMe'
-import Skills from './components/Skills'
-import About from './components/About'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
+import EstimationForm from './components/EstimationForm'
+import Sidebar from './components/Sidebar'
+import OverallProjects from './components/OverallProjects'
+import ProjectList from './components/ProjectList'
+import ProjectDetails from './components/ProjectDetails'
 import LoadingScreen from './components/LoadingScreen'
-import CustomCursor from './components/CustomCursor'
+import DashboardHome from './components/DashboardHome'
+import KanbanBoard from './components/KanbanBoard'
+import ClientView from './components/ClientView'
+import { motion, AnimatePresence } from 'framer-motion'
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  // Hooks must be at top — before any conditional return
+  const [activeView, setActiveView] = useState('home');
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
+
+  // Check if URL has ?client=PROJECT_ID (client shared link)
+  const urlParams = new URLSearchParams(window.location.search);
+  const clientProjectId = urlParams.get('client');
+
+  // If it's a client link, show only ClientView — no admin sidebar
+  if (clientProjectId) {
+    return (
+      <>
+        <div className="bg-glow-1"></div>
+        <div className="bg-glow-2"></div>
+        <div style={{ minHeight: '100vh', padding: '2rem' }}>
+          <header style={{ marginBottom: '2rem', textAlign: 'center' }}>
+            <h1 style={{ fontSize: '2rem', background: 'linear-gradient(to right, #6366f1, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>
+              Innovative Estimation
+            </h1>
+          </header>
+          <ClientView projectId={clientProjectId} />
+        </div>
+      </>
+    );
+  }
+
+  const handleSelectProject = (id) => {
+    setSelectedProjectId(id);
+    setActiveView('project-details');
+  };
+
+  const renderContent = () => {
+    switch (activeView) {
+      case 'home':
+        return <DashboardHome onNavigate={setActiveView} />;
+      case 'add-project':
+        return <EstimationForm />;
+      case 'view-projects':
+        return <ProjectList onSelectProject={handleSelectProject} />;
+      case 'project-details':
+        return <ProjectDetails projectId={selectedProjectId} onBack={() => setActiveView('view-projects')} onNavigate={setActiveView} />;
+      case 'overall':
+        return <OverallProjects />;
+      case 'kanban':
+        return <KanbanBoard onSelectProject={handleSelectProject} />;
+      case 'client-view':
+        return <ClientView projectId={selectedProjectId} />;
+      default:
+        return <DashboardHome onNavigate={setActiveView} />;
+    }
+  };
 
   return (
     <>
-      <AnimatePresence>
-        {isLoading && (
-          <LoadingScreen onComplete={() => setIsLoading(false)} />
-        )}
-      </AnimatePresence>
-
-      <CustomCursor />
+      <LoadingScreen />
+      <div className="bg-glow-1"></div>
+      <div className="bg-glow-2"></div>
+      <div className="app-layout">
+      <Sidebar activeView={activeView} setActiveView={setActiveView} />
       
-      <Background3D />
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <Navigation />
-        <main>
-          <Hero />
-          <AboutMe />
-          <Skills />
-          <Projects />
-          <About />
-          <Contact />
-        </main>
-        
-        <footer style={{
-          borderTop: '1px solid var(--primary)',
-          padding: '2rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '1rem',
-          background: 'var(--bg-deep)'
-        }}>
-          <div>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginTop: '0.5rem', fontFamily: 'var(--font-heading)' }}>© 2024 Lokeshwaran V. All Rights Reserved.</p>
-          </div>
-          <div style={{ display: 'flex', gap: '2rem' }}>
-            <a href="https://www.linkedin.com/in/lokesh-waran-v-0934412a4?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none', fontSize: '0.875rem', textTransform: 'uppercase', letterSpacing: '1px', fontFamily: 'var(--font-heading)' }}>LINKEDIN</a>
-            <a href="https://github.com/llokeshwaran008-sys" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none', fontSize: '0.875rem', textTransform: 'uppercase', letterSpacing: '1px', fontFamily: 'var(--font-heading)' }}>GITHUB</a>
-          </div>
+      <main className="main-content">
+        <header style={{ marginBottom: '3rem' }}>
+          <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', background: 'linear-gradient(to right, #6366f1, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>
+            Innovative Estimation
+          </h1>
+          <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>
+            {activeView === 'home' && 'Welcome Back, Admin'}
+            {activeView === 'add-project' && 'Create New Estimation'}
+            {activeView === 'view-projects' && 'Project Management'}
+            {activeView === 'project-details' && 'Estimation Details'}
+            {activeView === 'overall' && 'Global Material Analytics'}
+            {activeView === 'kanban' && 'Project Management Board'}
+          </p>
+        </header>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeView}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+          >
+            {renderContent()}
+          </motion.div>
+        </AnimatePresence>
+
+        <footer style={{ marginTop: '4rem', textAlign: 'center', color: 'var(--text-muted)', paddingBottom: '2rem', fontSize: '0.8rem' }}>
+          <p>© 2026 Innovative Estimation Dashboard. Professional Reporting Tool.</p>
         </footer>
-      </div>
+      </main>
+    </div>
     </>
   )
 }
