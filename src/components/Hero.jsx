@@ -27,18 +27,18 @@ export default function Hero() {
   useEffect(() => {
     const handleTyping = () => {
       const fullText = roles[roleIndex];
-      
+
       if (!isDeleting) {
         setCurrentText(fullText.substring(0, currentText.length + 1));
         setTypingSpeed(100);
-        
+
         if (currentText === fullText) {
           setTimeout(() => setIsDeleting(true), 2000);
         }
       } else {
         setCurrentText(fullText.substring(0, currentText.length - 1));
         setTypingSpeed(50);
-        
+
         if (currentText === "") {
           setIsDeleting(false);
           setRoleIndex((prev) => (prev + 1) % roles.length);
@@ -59,7 +59,7 @@ export default function Hero() {
     x.set(mouseX / width - 0.5);
     y.set(mouseY / height - 0.5);
   };
-  
+
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
@@ -91,25 +91,25 @@ export default function Hero() {
         }}></div>
       </div>
 
-      <div 
+      <div
         style={{ position: 'relative', zIndex: 10, textAlign: 'center', maxWidth: '1024px', perspective: 1000 }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
         <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1, type: "spring" }}
-            style={{ 
-              fontFamily: 'var(--font-heading)', 
-              fontSize: 'clamp(2.5rem, 8vw, 8rem)', 
-              fontWeight: 700, 
-              letterSpacing: '0.05em', 
-              marginBottom: '2rem', 
-              lineHeight: 1.1, 
-              transform: "translateZ(70px)", 
-              color: 'var(--primary)', 
+            style={{
+              fontFamily: 'var(--font-heading)',
+              fontSize: 'clamp(2.5rem, 8vw, 8rem)',
+              fontWeight: 700,
+              letterSpacing: '0.05em',
+              marginBottom: '2rem',
+              lineHeight: 1.1,
+              transform: "translateZ(70px)",
+              color: 'var(--primary)',
               textShadow: '0 0 20px var(--primary-glow)',
               wordBreak: 'break-word'
             }}
@@ -117,7 +117,7 @@ export default function Hero() {
             LOKESHWARAN V
           </motion.h1>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
@@ -134,7 +134,7 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -144,12 +144,12 @@ export default function Hero() {
               <a href="https://github.com/llokeshwaran008-sys" target="_blank" rel="noopener noreferrer" className="glass-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '3.5rem', height: '3.5rem', borderRadius: '50%', color: 'var(--text-main)', transition: 'all 0.3s ease', textDecoration: 'none' }}>
                 <Github size={24} />
               </a>
-              <a href="https://linkedin.com/in/lokeshwaran-v" target="_blank" rel="noopener noreferrer" className="glass-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '3.5rem', height: '3.5rem', borderRadius: '50%', color: 'var(--text-main)', transition: 'all 0.3s ease', textDecoration: 'none' }}>
+              <a href="https://www.linkedin.com/in/lokesh-waran-v-0934412a4?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" className="glass-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '3.5rem', height: '3.5rem', borderRadius: '50%', color: 'var(--text-main)', transition: 'all 0.3s ease', textDecoration: 'none' }}>
                 <Linkedin size={24} />
               </a>
             </div>
-            <a href={`${import.meta.env.BASE_URL}Lokesh MCA Resume.pdf`} download="Lokesh MCA Resume.pdf" className="glass-panel" style={{ 
-              display: 'inline-flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)', 
+            <a href={`${import.meta.env.BASE_URL}Lokesh MCA Resume.pdf`} download="Lokesh MCA Resume.pdf" className="glass-panel" style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)',
               fontFamily: 'var(--font-heading)', fontWeight: 700, padding: '1rem 2rem', textDecoration: 'none', transition: 'all 0.3s ease', textTransform: 'uppercase', letterSpacing: '2px'
             }}>
               VIEW MY RESUME <Download size={20} />

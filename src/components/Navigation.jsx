@@ -68,7 +68,7 @@ export default function Navigation() {
               {link.name}
             </a>
           ))}
-          <button 
+          <button
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
             className="btn-primary"
             style={{ padding: '0.5rem 1.5rem', fontSize: '0.75rem', width: 'auto' }}>
@@ -78,7 +78,7 @@ export default function Navigation() {
 
         {/* Mobile Menu Toggle */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} className="md-hidden">
-          <button 
+          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             style={{ background: 'none', border: 'none', color: 'var(--primary)', cursor: 'pointer', zIndex: 101, display: 'flex', alignItems: 'center' }}
           >
@@ -110,16 +110,16 @@ export default function Navigation() {
             }}
           >
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
+              <a
+                key={link.name}
+                href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 style={{ color: 'var(--text-main)', textDecoration: 'none', fontSize: '1.25rem', fontFamily: 'var(--font-heading)', textTransform: 'uppercase', letterSpacing: '2px' }}
               >
                 {link.name}
               </a>
             ))}
-            <button 
+            <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
