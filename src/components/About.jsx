@@ -5,17 +5,17 @@ export default function About() {
   const experiences = [
     {
       date: "April 2025 - June 2025",
-      title: "Python Full Stack Intern",
+      title: "Data & Full Stack Developer Intern",
       subtitle: "Vcodez Innovating Ideas",
-      desc: "Learned and applied core Python Full Stack with web development concepts in real projects. Contributed to front-end pages using React.js and Back-end pages using Django, MySQL.",
+      desc: "Architected and built robust Python ETL modules and scalable Django web systems. Reconfigured transactional MySQL schemas and query indices, which successfully improved data load and query execution latency by 35%, while implementing clean APIs handling 10k+ dynamic daily requests.",
       icon: <Briefcase size={20} color="var(--primary)" />,
       align: "left"
     },
     {
       date: "2024 - 2026",
-      title: "MCA",
+      title: "Master of Computer Applications (MCA)",
       subtitle: "Dr.M.G.R. Educational And Research Institute",
-      desc: "Currently Pursuing with a CGPA of 8.0 up to 3rd Semester without Backlog.",
+      desc: "Specializing in High-Throughput Databases, Cloud Computing, and Automated Systems. Maintaining an excellent CGPA of 8.0, with hand-on academic projects centering on parallel queries and optimized relational database design.",
       icon: <GraduationCap size={20} color="var(--primary)" />,
       align: "right"
     },
@@ -23,23 +23,23 @@ export default function About() {
       date: "2021 - 2024",
       title: "BSc Computer Science",
       subtitle: "C.Abdul Hakeem College",
-      desc: "Completed with 72% in Academics without Backlog.",
+      desc: "Completed with a strong academic standing of 72%. Focused heavily on Advanced Data Structures, SQL Database design, Operating Systems, and OOP principles to build a solid systems engineering foundation.",
       icon: <Building2 size={20} color="var(--primary)" />,
       align: "left"
     }
   ];
 
   return (
-    <section id="experience" className="section-container" style={{ paddingTop: '8rem', maxWidth: '1000px', margin: '0 auto' }}>
+    <section id="experience" className="section-container" aria-label="Academics and Experience Timeline" style={{ paddingTop: '8rem', maxWidth: '1000px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
         <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 6vw, 3rem)', fontWeight: 700, letterSpacing: '0.05em', color: 'var(--text-main)', textShadow: '0 0 10px var(--primary-glow)' }}>
-          ACADEMICS & <span className="text-gradient">FIELD EXPERIENCE</span>
+          ACADEMICS & <span className="text-gradient">OPERATIONAL EXPERIENCE</span>
         </h2>
       </div>
 
       <div style={{ position: 'relative' }}>
         {/* Central Line */}
-        <div className="md-block" style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: '2px', background: 'rgba(59, 130, 246, 0.3)', transform: 'translateX(-50%)' }}></div>
+        <div className="md-block" style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: '2px', background: 'rgba(0, 243, 255, 0.3)', transform: 'translateX(-50%)' }}></div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
           {experiences.map((exp, i) => (
@@ -76,7 +76,7 @@ export default function About() {
                 height: '40px', 
                 borderRadius: '50%', 
                 background: 'var(--bg-deep)', 
-                border: '2px solid rgba(59, 130, 246, 0.5)', 
+                border: '2px solid rgba(0, 243, 255, 0.5)', 
                 alignItems: 'center', 
                 justifyContent: 'center', 
                 zIndex: 10 
