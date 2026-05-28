@@ -12,7 +12,7 @@ const projectsList = [
     role: "Solo full-stack developer. Built a React frontend with live-polling, a Django REST API that aggregates GitHub Actions results, and a MySQL database storing run history. Deployed on Linux with NGINX + PM2.",
     impact: "Reduced mean time to detect failures by 60%. The team went from finding problems reactively to catching them within 2 minutes of a bad deploy.",
     tags: ["React", "Django", "MySQL", "Git", "GitHub"],
-    image: "public/dev.png",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
     link: "#"
   },
   {
@@ -23,7 +23,7 @@ const projectsList = [
     role: "Full-stack developer & UI lead. Rebuilt the frontend in React with CSS3 responsive layouts, created a Django backend for orders/payments, used Supabase for live inventory, and tracked version history with Git/GitHub.",
     impact: "Page load time dropped from 6 s to 1.8 s (Lighthouse score 91). Cart-to-checkout conversion improved by 28% in the first month post-launch.",
     tags: ["React", "Django", "Supabase", "MySQL", "CSS3"],
-    image: "public/e-com.png",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=800&auto=format&fit=crop",
     link: "#"
   },
   {
@@ -45,7 +45,7 @@ const projectsList = [
     role: "Full-stack engineer. Designed a React drag-and-drop Kanban board, connected Supabase Realtime for push updates, backed by a Django REST API and MySQL for persistence.",
     impact: "Live sync latency under 200 ms. Task completion visibility improved by 40%; the team eliminated weekly status-update meetings entirely.",
     tags: ["React", "Supabase", "Django", "MySQL", "JavaScript"],
-    image: "public/task.png",
+    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?q=80&w=800&auto=format&fit=crop",
     link: "#"
   }
 ];

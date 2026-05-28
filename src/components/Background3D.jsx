@@ -5,8 +5,8 @@ import * as random from 'maath/random/dist/maath-random.esm';
 
 function Particles() {
   const ref = useRef();
-  // 5000 random points scattered in a wide sphere to look like deep space stars
-  const sphere = random.inSphere(new Float32Array(5000), { radius: 12 });
+  // 5000 random points scattered in a wide sphere (5000 points * 3 coordinates each = 15000)
+  const sphere = random.inSphere(new Float32Array(15000), { radius: 12 });
 
   useFrame((state, delta) => {
     const scrollY = window.scrollY;
