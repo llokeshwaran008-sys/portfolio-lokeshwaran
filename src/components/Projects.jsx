@@ -47,6 +47,17 @@ const projectsList = [
     tags: ["React", "Supabase", "Django", "MySQL", "JavaScript"],
     image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?q=80&w=800&auto=format&fit=crop",
     link: "#"
+  },
+  {
+    id: 5,
+    title: "Tamil Audio Translator",
+    shortDesc: "Collaborative task board with live updates using Supabase Realtime subscriptions and a React UI.",
+    problem: "A remote team was using shared spreadsheets for task tracking — no live sync, no assignment history, constant merge conflicts.",
+    role: "Full-stack engineer. Designed a React drag-and-drop Kanban board, connected Supabase Realtime for push updates, backed by a Django REST API and MySQL for persistence.",
+    impact: "Live sync latency under 200 ms. Task completion visibility improved by 40%; the team eliminated weekly status-update meetings entirely.",
+    tags: ["React", "Supabase", "Django", "MySQL", "JavaScript"],
+    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?q=80&w=800&auto=format&fit=crop",
+    link: "#"
   }
 ];
 
